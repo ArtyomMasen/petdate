@@ -6,6 +6,8 @@ export class User {
   @ApiProperty({example: 1, description: 'this is ID maaaan'})
   @PrimaryGeneratedColumn()
   id: string;
+
+  @ApiProperty({example: 'Example123', description: 'this is ID maaaan'})
   @Column()
   login: string;
   @Column()
