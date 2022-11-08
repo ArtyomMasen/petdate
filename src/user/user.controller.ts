@@ -18,7 +18,7 @@ export class UserController {
   @Get(':id')
   @ApiResponse({
     status: 200,
-    description: 'this is one user bruuuh',
+    description: 'User ID',
     type: User,
   })
   async getOne(@Param('id') id: string): Promise<User> {

@@ -38,6 +38,14 @@ export class UserService {
     return await this.getOneUser(id);
   }
 
+  async getUserLogin(login: string): Promise<User> {
+    return await this.userRepository.findOne({
+      where: {
+        login: login
+      }
+    })
+  }
+
   async checkUser(login: string, email: string): Promise<User> {
     return await this.userRepository.findOne({
       where: [
