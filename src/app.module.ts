@@ -6,6 +6,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user/user.entity";
 import { AuthModule } from "./auth/auth.module";
 import { AuthService } from "./auth/auth.service";
+import { JwtService } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -17,14 +18,14 @@ import { AuthService } from "./auth/auth.service";
         "host": "localhost",
         "port": 5432,
         "username": "postgres",
-        "password": "postgres",
+        "password": "123321",
         "database": "postgres",
         "entities": [User],
         "synchronize": true
       }
     )
   ],
-  controllers: [AppController,],
-  providers: [AppService, AuthService],
+  controllers: [AppController],
+  providers: [AppService, AuthService, JwtService],
 })
 export class AppModule {}
