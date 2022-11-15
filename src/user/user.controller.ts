@@ -9,12 +9,11 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiNoContentResponse, ApiNotFoundResponse, ApiOkResponse, ApiResponse } from "@nestjs/swagger";
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import { AuthService } from "../auth/auth.service";
 
 @Controller('user')
 export class UserController {
@@ -26,6 +25,7 @@ export class UserController {
   }
 
   @Get(':id')
+  @ApiOkResponse({ type: CreateUserDto })
   @ApiResponse({
     status: 200,
     description: 'User ID',
@@ -35,6 +35,12 @@ export class UserController {
     return await this.userService.getOneUser(id);
   }
 
+  @ApiResponse({
+    status: 201,
+    description: 'Creating new user',
+    type: User,
+  })
+  @ApiOkResponse({ type: CreateUserDto })
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
     if (
@@ -45,6 +51,12 @@ export class UserController {
     return await this.userService.createUser(createUserDto);
   }
 
+  @ApiResponse({
+    status: 200,
+    description: 'Updating user',
+    type: User,
+  })
+  @ApiOkResponse({ type: CreateUserDto })
   @Patch(':id')
   async updateUser(
     @Param('id') id: string,
@@ -53,6 +65,13 @@ export class UserController {
     return await this.userService.updateUser(id, updateUserDto);
   }
 
+  @ApiResponse({
+    status: 200,
+    description: 'Delete user',
+    type: User,
+  })
+  @ApiNoContentResponse()
+  @ApiNotFoundResponse({ description: 'not found' })
   @Delete(':id')
   async removeUser(@Param('id') id: string): Promise<string> {
     return await this.userService.removeUser(id);

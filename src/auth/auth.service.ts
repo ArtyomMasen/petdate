@@ -6,7 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
   constructor(
     private userService: UserService,
-    private jwtService: JwtService,
+    private readonly jwtService: JwtService,
   ) {
   }
 
