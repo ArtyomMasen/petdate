@@ -14,6 +14,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 import { User } from './user.entity';
+import { AuthService } from "../auth/auth.service";
 
 @Controller('user')
 export class UserController {
@@ -36,7 +37,6 @@ export class UserController {
 
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-    console.log(createUserDto);
     if (
       await this.userService.checkUser(createUserDto.login, createUserDto.email)
     ) {

@@ -13,7 +13,7 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 7432,
+      port: 5432,
       username: 'postgres',
       password: '123321',
       database: 'postgres',
