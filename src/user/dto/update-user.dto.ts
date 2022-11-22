@@ -12,4 +12,13 @@ export class UpdateUserDto {
 
   @ApiProperty()
   readonly email: string;
+
+  @ApiProperty()
+  readonly name: string;
+
+  @ApiProperty()
+  readonly surname: string;
+
+  @ApiProperty()
+  readonly interests: string;
 }

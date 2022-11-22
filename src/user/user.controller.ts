@@ -41,7 +41,7 @@ export class UserController {
     type: User,
   })
   @ApiOkResponse({ type: CreateUserDto })
-  @Post()
+  @Post('/register')
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
     if (
       await this.userService.checkUser(createUserDto.login, createUserDto.email)

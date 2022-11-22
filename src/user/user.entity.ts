@@ -20,4 +20,19 @@ export class User {
   @Column()
   @IsEmail()
   email: string;
+
+  @Column('varchar')
+  name: string;
+
+  @Column('varchar')
+  surname: string;
+
+  @Column('varchar')
+  interests: string;
+
+  @Column('boolean')
+  notifications: boolean;
+
+  @Column('boolean')
+  is_online: boolean;
 }

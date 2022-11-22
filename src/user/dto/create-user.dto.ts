@@ -12,4 +12,19 @@ export class CreateUserDto {
 
   @ApiProperty()
   readonly email: string;
+
+  @ApiProperty()
+  readonly name: string;
+
+  @ApiProperty()
+  readonly surname: string;
+
+  @ApiProperty()
+  readonly interests: string;
+
+  @ApiProperty()
+  readonly notifications: boolean;
+
+  @ApiProperty()
+  readonly is_online: boolean;
 }
