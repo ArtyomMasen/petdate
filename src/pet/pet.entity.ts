@@ -22,4 +22,8 @@ export class Pet {
 
   @Column('varchar')
   description: string;
+
+  // @ManyToOne(type => User, user => user.pets)
+  // user: User;
+
 }

@@ -35,4 +35,7 @@ export class User {
 
   @Column('boolean')
   is_online: boolean;
+
+  // @OneToMany(() => Pet, pet => pet.user)
+  // pets: Pet;
 }
