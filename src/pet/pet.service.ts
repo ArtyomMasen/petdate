@@ -19,8 +19,8 @@ export class PetService {
     return await this.petRepository.save( {...petDto})
   }
 
-  async removePet(id: string): Promise<string> {
-    await this.petRepository.delete({id})
-    return id;
+  async removePet(pet_id: string): Promise<string> {
+    await this.petRepository.delete({pet_id})
+    return pet_id;
   }
 }

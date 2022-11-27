@@ -12,14 +12,14 @@ export class PetController {
     return await this.petService.getAll();
   }
 
-  @Post()
+  @Post('/register-pet')
   async createPet(@Body() createPetDro: CreatePetDto): Promise<Pet> {
     return await this.petService.createPet(createPetDro)
   }
 
   @Delete()
-  async removePet(@Param('id') id: string): Promise<string> {
-    return await this.petService.removePet(id)
+  async removePet(@Param('id') pet_id: string): Promise<string> {
+    return await this.petService.removePet(pet_id)
   }
 }
 

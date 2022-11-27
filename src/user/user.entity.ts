@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail } from "class-validator";
+import { Pet } from "../pet/pet.entity";
 
 @Entity()
 export class User {
@@ -36,6 +37,6 @@ export class User {
   @Column('boolean')
   is_online: boolean;
 
-  // @OneToMany(() => Pet, pet => pet.user)
-  // pets: Pet;
+  @OneToMany(() => Pet, pet => pet.user)
+  pets: Pet;
 }

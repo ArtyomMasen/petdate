@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "../user/user.entity";
 
 @Entity()
 export class Pet {
   @PrimaryGeneratedColumn('increment')
-  id: string;
+  pet_id: string;
 
   @Column('varchar')
   login: string;
@@ -23,7 +24,7 @@ export class Pet {
   @Column('varchar')
   description: string;
 
-  // @ManyToOne(type => User, user => user.pets)
-  // user: User;
+  @ManyToOne(type => User, user => user.pets)
+  user: User;
 
 }

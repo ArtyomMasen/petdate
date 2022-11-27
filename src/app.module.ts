@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { User } from "./user/user.entity";
 import { PetModule } from './pet/pet.module';
+import { Pet } from "./pet/pet.entity";
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { PetModule } from './pet/pet.module';
       username: 'postgres',
       password: '123321',
       database: 'postgres',
-      entities: [User],
+      entities: [User, Pet],
       synchronize: true,
     }),
     PetModule,
