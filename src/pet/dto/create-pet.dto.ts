@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IdDto } from "../../_common/id.dto";
 
 export class CreatePetDto {
   @ApiProperty()
@@ -21,4 +22,7 @@ export class CreatePetDto {
 
   @ApiProperty()
   readonly description: string;
+
+  @ApiProperty({type: () => IdDto})
+  readonly user: IdDto;
 }

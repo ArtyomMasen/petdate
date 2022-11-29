@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "../user/user.entity";
+import { plainToClass } from "class-transformer";
 
 @Entity()
 export class Pet {
@@ -24,7 +25,11 @@ export class Pet {
   @Column('varchar')
   description: string;
 
-  @ManyToOne(() => User, user => user.pets)
+  static createFromObject<T>(object: T): Pet {
+    return plainToClass(Pet, object);
+  }
+
+  @ManyToOne(() => User, user => user.pets, { eager: true })
   user: User;
 
 }

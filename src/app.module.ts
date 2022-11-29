@@ -18,7 +18,7 @@ import { Pet } from "./pet/pet.entity";
         "host": "localhost",
         "port": 5432,
         "username": "postgres",
-        "password": "postgres",
+        "password": "123321",
         "database": "postgres",
         "entities": [User, Pet],
         "synchronize": true
