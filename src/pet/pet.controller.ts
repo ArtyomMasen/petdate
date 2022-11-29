@@ -16,7 +16,7 @@ export class PetController {
   @Post('/register-pet')
   async createPet(@Body() createPetDto: CreatePetDto): Promise<Pet> {
     //TODO: Достань JWT чтобы записать id
-    return await this.petService.createPet(DbPetDto(createPetDto, jwtId))
+    return await this.petService.createPet(new DbPetDto(createPetDto, jwtId))
   }
 
   @Delete()
