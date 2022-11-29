@@ -12,16 +12,18 @@ import { Pet } from "./pet/pet.entity";
   imports: [
     UserModule,
     AuthModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '123321',
-      database: 'postgres',
-      entities: [User, Pet],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(
+      {
+        "type": "postgres",
+        "host": "localhost",
+        "port": 5432,
+        "username": "postgres",
+        "password": "postgres",
+        "database": "postgres",
+        "entities": [User, Pet],
+        "synchronize": true
+      }
+    ),
     PetModule,
   ],
   controllers: [AppController],

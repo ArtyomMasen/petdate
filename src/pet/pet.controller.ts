@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { PetService } from "./pet.service";
 import { Pet } from "./pet.entity";
 import { CreatePetDto } from "./dto/create-pet.dto";
+import { DbPetDto } from "./dto/db-pet.dto";
 
 @Controller('pet')
 export class PetController {
@@ -13,8 +14,9 @@ export class PetController {
   }
 
   @Post('/register-pet')
-  async createPet(@Body() createPetDro: CreatePetDto): Promise<Pet> {
-    return await this.petService.createPet(createPetDro)
+  async createPet(@Body() createPetDto: CreatePetDto): Promise<Pet> {
+    //TODO: Достань JWT чтобы записать id
+    return await this.petService.createPet(DbPetDto(createPetDto, jwtId))
   }
 
   @Delete()
