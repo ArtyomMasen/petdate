@@ -30,17 +30,9 @@ export class PetService {
     return response;
   }
 
-  async createPet(petDto: CreatePetDto): Promise<Pet> {
-    return this.petRepository.save({
-      user_id: petDto.user.id,
-      gender: petDto.gender,
-      breed: petDto.breed,
-      kind_of_animal: petDto.kind_of_animal,
-      description: petDto.description,
-      breed_certificate: petDto.breed_certificate,
-      name: petDto.name,
-    });
-    // return await this.petRepository.save( {...petDto})
+  async createPet(petDto: CreatePetDto, token: string): Promise<Pet> {
+    const userId = getUserIdByToken(token);
+    return await this.petRepository.save( {...petDto})
   }
 
   async removePet(pet_id: string): Promise<string> {

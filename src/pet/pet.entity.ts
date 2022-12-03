@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "../user/user.entity";
-import { plainToClass } from "class-transformer";
+import { plainToClass, plainToInstance } from "class-transformer";
 
 @Entity()
 export class Pet {
@@ -26,10 +26,10 @@ export class Pet {
   description: string;
 
   static createFromObject<T>(object: T): Pet {
-    return plainToClass(Pet, object);
+    return plainToInstance(Pet, object);
   }
 
-  @ManyToOne(() => User, user => user.pets, { eager: true })
+  @ManyToOne(() => User, user => user.pets)
   user: User;
 
 }

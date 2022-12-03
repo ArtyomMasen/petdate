@@ -16,7 +16,8 @@ export class PetController {
   @UseGuards(JwtAuthGuard)
   @Post('/register-pet')
   async createPet(@Req() req: any, @Body() createPetDto: CreatePetDto): Promise<Pet> {
-    const userId = req.user.userId;
+    console.log(req);
+    const userId = req.sub;
     if (!userId) {
       throw new UnauthorizedException();
     }
